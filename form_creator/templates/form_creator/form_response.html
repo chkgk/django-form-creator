@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
+{% load django_bootstrap5 %}
 
 {% block head %}
   <title>Form Detail</title>
@@ -12,9 +13,9 @@
   {% endif %}
 
   <form method="POST">
-    {{ form|crispy }}
+    {% bootstrap_form form %}
     {% csrf_token %}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    {% bootstrap_button button_type="submit" content="Submit" %}
   </form>
 
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
+{% load static %}
+{% load django_bootstrap5 %}
 
 {% block head %}
 
@@ -21,7 +21,7 @@
 <h1 class="mt-3 mb-3">New Form</h1>
 <form method="POST">
   {% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" class="btn btn-primary" value="Submit">
+  {% bootstrap_form form %}
+  {% bootstrap_button button_type="submit" content="Submit" %}
 </form>
 {% endblock %}

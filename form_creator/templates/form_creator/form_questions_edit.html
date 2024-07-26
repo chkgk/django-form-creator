@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
 
 {% block head %}
 <title>Edit Questions</title>
@@ -25,27 +25,30 @@
 
 <form method="POST">
   <div class="forms">
-    <!-- <input type="hidden" data-form-id="{{ object.id }}" id="form-id"> -->
     {{ formset.management_form }}
     {% for form in formset %}
-    <div class="forms__form mb-5">
-      {{ form|crispy }}
+    <div class="forms__form mb-3 container border rounded">
+        {% bootstrap_form form  %} 
     </div>
     {% endfor %}
+{#      {% bootstrap_formset formset %}#}
+{#      {% bootstrap_formset_errors formset %}#}
     {% csrf_token %}
 
   </div>
 
+
+
   <button class="btn btn-primary" id="add-another">Add another</button>
 
-  <div class="d-flex justify-content-center mb-4">
-    <input type="submit" class="btn btn-primary mr-1" value="Submit">
-    <a href="{{ object.get_absolute_url }}" class="btn btn-danger ml-1">Cancel</a>
+  <div class="mb-3 d-flex justify-content-center">
+      {% bootstrap_button button_type="submit" content="Submit" button_class="btn-success" extra_classes="mx-3" %}
+      {% bootstrap_button button_type="link" href=object.get_absolute_url content="Cancel" button_class="btn-danger" %}
   </div>
 </form>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'form_creator/js/additional_questions.js' %}"></script>
+    <script src="{% static 'form_creator/js/additional_questions.js' %}"></script>
 {% endblock %}

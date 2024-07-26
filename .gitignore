@@ -263,3 +263,6 @@ temp_scripts/
 .vscode
 
 tmp*
+
+# commands
+commands.txt

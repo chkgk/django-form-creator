@@ -232,8 +232,8 @@ class TestForm(TestCase):
         """Test that the `get_editable_forms` method returns an empty queryset
         for an anonymous user.
         """
-        self.assertQuerysetEqual(fc_models.Form.get_editable_forms(None), [])
-        self.assertQuerysetEqual(
+        self.assertQuerySetEqual(fc_models.Form.get_editable_forms(None), [])
+        self.assertQuerySetEqual(
             fc_models.Form.get_editable_forms(AnonymousUser()),
             [],
         )
